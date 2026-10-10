@@ -1,22 +1,16 @@
 """
-Metode Gauss-Seidel - Model Bioimpedansi Jaringan Tubuh (Teknik Biomedis)
+Metode Gauss-Seidel 
 
-KASUS (parameter hipotetis)
----------------------------
-Pada pengukuran bioimpedansi (misalnya analisis komposisi tubuh), arus kecil
-I = 0,5 mA diinjeksikan lewat elektroda di permukaan kulit. Jaringan dimodelkan
-sebagai jaringan resistif 4 simpul dengan tegangan simpul (V):
-  V1 = kulit (di bawah elektroda), V2 = lemak subkutan,
-  V3 = otot,                       V4 = jaringan dalam/tulang.
+KASUS (parameter hipotetis):
+I = 0,5 mA diinjeksikan lewat elektroda di permukaan kulit. 
+Jaringan dimodelkan sebagai jaringan resistif 4 simpul dengan tegangan simpul (V):
+  V1 = kulit (di bawah elektroda), 
+  V2 = lemak subkutan,
+  V3 = otot,                       
+  V4 = jaringan dalam/tulang.
 Konduktansi (mS): kulit-lemak 2, kulit-otot 1, lemak-otot 3, lemak-dalam 1,5,
 otot-dalam 2; jalur ke elektroda kembali (referensi 0 V): kulit 0,5, lemak 0,8,
 otot 1,2, dalam 2,0.
-Analisis simpul (KCL) menghasilkan sistem G.V = I (mS, mA -> V):
-
-   3,5 V1 - 2,0 V2 - 1,0 V3            = 0,5
-  -2,0 V1 + 7,3 V2 - 3,0 V3 - 1,5 V4   = 0
-  -1,0 V1 - 3,0 V2 + 7,2 V3 - 2,0 V4   = 0
-          - 1,5 V2 - 2,0 V3 + 5,5 V4   = 0
 
 RUMUS GAUSS-SEIDEL (nilai terbaru langsung dipakai):
     x_i^(k+1) = ( b_i - sum_{j<i} a_ij x_j^(k+1) - sum_{j>i} a_ij x_j^(k) ) / a_ii
